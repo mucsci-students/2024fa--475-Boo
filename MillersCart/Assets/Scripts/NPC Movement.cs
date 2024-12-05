@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
-    public GameObject ball;             // Reference to the ball
+    public GameObject checkpoint             // Reference to the ball
     public float moveSpeed = 10f;       // Speed at which the NPC moves.
     public float rotationSpeed = 5f;    // Speed for rotating.
     public float stopAccelerationDistance = 10f; // Distance at which the NPC will stop accelerating before a turn.
@@ -28,7 +28,7 @@ public class NPCMovement : MonoBehaviour
         directionToCheckpoint.y = 0; // Prevents the NPC from moving up or down
 
         // Rotate NPC towards the ball
-        Quaternion lookRotation = Quaternion.LookRotation(directionToBall);
+        Quaternion lookRotation = Quaternion.LookRotation(directionToCheckpoint);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
         // Move forward
