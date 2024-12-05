@@ -4,52 +4,89 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
-    public GameObject checkpoint             // Reference to the ball
-    public float moveSpeed = 10f;       // Speed at which the NPC moves.
-    public float rotationSpeed = 5f;    // Speed for rotating.
-    public float stopAccelerationDistance = 10f; // Distance at which the NPC will stop accelerating before a turn.
+    public string checkpointPrefix = "Checkpoint"; // Prefix for checkpoint names.
+    public float moveSpeed = 10f; // Speed of the NPC.
+    public float rotationSpeed = 5f; // Rotation speed for smooth turns.
+    public float stopAccelerationDistance = 5f; // Distance to slow down near checkpoints.
+    public float checkpointReachThreshold = 2f; // Distance threshold to consider a checkpoint reached.
 
     private Rigidbody npcRigidbody;
+    private List<GameObject> checkpoints = new List<GameObject>();
+    private int currentCheckpointIndex = 0;
 
     void Start()
     {
         npcRigidbody = GetComponent<Rigidbody>();
+        LoadCheckpoints();
     }
 
     void FixedUpdate()
     {
-        MoveToNextCheckpoint();
+        if (checkpoints.Count > 0)
+        {
+            MoveToNextCheckpoint();
+        }
+    }
+
+    void LoadCheckpoints()
+    {
+        // Find all GameObjects with the checkpoint prefix in the scene.
+        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name.StartsWith(checkpointPrefix))
+            {
+                checkpoints.Add(obj);
+            }
+        }
+
+        // Sort checkpoints based on their names to ensure proper order.
+        checkpoints.Sort((a, b) => string.Compare(a.name, b.name));
+        
+        if (checkpoints.Count == 0)
+        {
+            Debug.LogError("No checkpoints found in the scene with the prefix " + checkpointPrefix);
+        }
     }
 
     void MoveToNextCheckpoint()
     {
-        // Calculate direction to the ball
-        Vector3 directionToCheckpoint = (checkpoint.transform.position - transform.position).normalized;
-        directionToCheckpoint.y = 0; // Prevents the NPC from moving up or down
+        if (currentCheckpointIndex >= checkpoints.Count)
+        {
+            Debug.Log("Race finished!"); 
+            return;
+        }
 
-        // Rotate NPC towards the ball
+        // Get the current checkpoint.
+        GameObject currentCheckpoint = checkpoints[currentCheckpointIndex];
+
+        // Calculate direction to the current checkpoint.
+        Vector3 directionToCheckpoint = (currentCheckpoint.transform.position - transform.position).normalized;
+        directionToCheckpoint.y = 0; // Prevent vertical movement.
+
+        // Rotate towards the checkpoint.
         Quaternion lookRotation = Quaternion.LookRotation(directionToCheckpoint);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
 
-        // Move forward
-        npcRigidbody.AddForce(transform.forward * moveSpeed);
+        // Check distance to the current checkpoint.
+        float distanceToCheckpoint = Vector3.Distance(transform.position, currentCheckpoint.transform.position);
 
-        // Check distance to the next checkpoint.
-        float distanceToCheckpoint = Vector3.Distance(transform.position, checkpoint.transform.position);
-
-        
-        // Check to see if the npc is too far the checkpoint.
-        if (distanceToCheckpoint >= stopAccelerationDistance && Vector3.Angle(transform.forward, directionToBall) > 30f)
+        // Adjust speed if near the checkpoint or on sharp turns.
+        if (distanceToCheckpoint <= stopAccelerationDistance)
         {
-            // Slow down if too far from the ball
-            if (npcRigidbody.velocity.normalized == transform.forward) 
-            {
-                npcRigidbody.velocity -= transform.forward * moveSpeed;
-            }
-            else
-            {
-                npcRigidbody.velocity = Vector3.zero;
-            }
+            float speedFactor = Mathf.Clamp01(distanceToCheckpoint / stopAccelerationDistance);
+            npcRigidbody.velocity = transform.forward * moveSpeed * speedFactor;
+        }
+        else
+        {
+            // Move forward at full speed.
+            npcRigidbody.velocity = transform.forward * moveSpeed;
+        }
+
+        // Check if the checkpoint has been reached.
+        if (distanceToCheckpoint <= checkpointReachThreshold)
+        {
+            currentCheckpointIndex++; 
         }
     }
 }
