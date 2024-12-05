@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: add86c0563738b348adcebc4e20bfa99
+  - enabled: 1
+    path: Assets/Scenes/KartTrack.unity
+    guid: b0f2094410eb03049af6297a9a9ddb8d
   m_configObjects: {}
