@@ -9,6 +9,7 @@ public class NPCMovement : MonoBehaviour
     public float rotationSpeed = 5f; // Rotation speed for smooth turns.
     public float stopAccelerationDistance = 5f; // Distance to slow down near checkpoints.
     public float checkpointReachThreshold = 2f; // Distance threshold to consider a checkpoint reached.
+    public float groundCheckDistance = 2f; // Distance for raycasting to detect the ground.
 
     private Rigidbody npcRigidbody;
     private List<GameObject> checkpoints = new List<GameObject>();
@@ -25,6 +26,7 @@ public class NPCMovement : MonoBehaviour
         if (checkpoints.Count > 0)
         {
             MoveToNextCheckpoint();
+            AlignToGround();
         }
     }
 
@@ -42,7 +44,7 @@ public class NPCMovement : MonoBehaviour
 
         // Sort checkpoints based on their names to ensure proper order.
         checkpoints.Sort((a, b) => string.Compare(a.name, b.name));
-        
+
         if (checkpoints.Count == 0)
         {
             Debug.LogError("No checkpoints found in the scene with the prefix " + checkpointPrefix);
@@ -62,7 +64,6 @@ public class NPCMovement : MonoBehaviour
 
         // Calculate direction to the current checkpoint.
         Vector3 directionToCheckpoint = (currentCheckpoint.transform.position - transform.position).normalized;
-        directionToCheckpoint.y = 0; // Prevent vertical movement.
 
         // Rotate towards the checkpoint.
         Quaternion lookRotation = Quaternion.LookRotation(directionToCheckpoint);
@@ -87,6 +88,24 @@ public class NPCMovement : MonoBehaviour
         if (distanceToCheckpoint <= checkpointReachThreshold)
         {
             currentCheckpointIndex++; 
+        }
+    }
+
+    void AlignToGround()
+    {
+        // Cast a ray downward to detect the ground.
+        Ray ray = new Ray(transform.position + Vector3.up * groundCheckDistance, Vector3.down);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, groundCheckDistance * 2f))
+        {
+            // Align the NPC's position to the ground.
+            Vector3 targetPosition = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            transform.position = targetPosition;
+
+            // Optionally align the NPC's rotation to the ground's normal.
+            Quaternion groundRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            transform.rotation = Quaternion.Slerp(transform.rotation, groundRotation, rotationSpeed * Time.deltaTime);
         }
     }
 }
