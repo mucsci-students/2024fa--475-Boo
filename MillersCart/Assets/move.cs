@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player1Movement : MonoBehaviour
+public class move : MonoBehaviour
 {
     public GameObject player;
     public float dynamicFrictionCoefficient = .05f;
@@ -32,7 +32,7 @@ public class Player1Movement : MonoBehaviour
         {
             // increase the players velocity in the direction they are facing
             playerRigidbody.velocity += player.transform.forward * 1.5f;
-            
+
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -41,11 +41,11 @@ public class Player1Movement : MonoBehaviour
             {
                 playerRigidbody.velocity -= player.transform.forward * 1.75f;
             }
-            else 
+            else
             {
                 playerRigidbody.velocity -= player.transform.forward * 1.5f;
             }
-            
+
         }
         if (Input.GetKey(KeyCode.A))
         {
