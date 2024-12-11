@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCMovement : MonoBehaviour
 {
     public string checkpointPrefix = "Checkpoint"; // Prefix for checkpoint names.
-    public float moveSpeed = 10f; // Speed of the NPC.
+    public float moveSpeed = 100f; // Speed of the NPC.
     public float rotationSpeed = 5f; // Rotation speed for smooth turns.
     public float stopAccelerationDistance = 5f; // Distance to slow down near checkpoints.
     public float checkpointReachThreshold = 2f; // Distance threshold to consider a checkpoint reached.
