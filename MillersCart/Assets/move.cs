@@ -28,13 +28,13 @@ public class move : MonoBehaviour
     void MovePlayer()
     {
         // Check for input
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.S))
         {
             // increase the players velocity in the direction they are facing
             playerRigidbody.velocity += player.transform.forward * 1.5f;
 
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.W))
         {
             // check to see if the player is moving forward
             if (playerRigidbody.velocity.normalized == player.transform.forward)
