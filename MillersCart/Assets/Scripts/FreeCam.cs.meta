@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:MillersCart/Assets/move.cs.meta
+guid: 3c072501bd6e3e844bc236e29d0596bf
+========
+guid: a0125bb94a7356c4c8c9ea4245e4cc8f
+>>>>>>>> be93254905c32067d57af3fe064f2efd6e5c10e0:MillersCart/Assets/Scripts/FreeCam.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
