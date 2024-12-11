@@ -2570,36 +2570,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100010, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
   m_PrefabInstance: {fileID: 2136414951}
   m_PrefabAsset: {fileID: 0}
---- !u!146 &274617065
-WheelCollider:
+--- !u!65 &274617069
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274617063}
-  serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.1
-  m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
-  m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 1
-  m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2607,8 +2585,12 @@ WheelCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_Enabled: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20685914, y: 0.3590446, z: 0.35904142}
+  m_Center: {x: -0.000000100582824, y: 0.0000609681, z: 0.00000009685753}
 --- !u!1 &276138830 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5522145973064359219, guid: 115c38ad02e9f474ea3d1c8cac6660f8, type: 3}
@@ -8349,36 +8331,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
   m_PrefabInstance: {fileID: 2136414951}
   m_PrefabAsset: {fileID: 0}
---- !u!146 &1072357276
-WheelCollider:
+--- !u!61 &1072357280
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072357274}
-  serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.1
-  m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
-  m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 1
-  m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8386,8 +8348,34 @@ WheelCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_Enabled: 1
-  m_ProvidesContacts: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00006114319, y: 0.00006107241}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2068528, y: 0.37029237}
+  m_EdgeRadius: 0
 --- !u!1 &1072390428 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5553104673209269600, guid: 115c38ad02e9f474ea3d1c8cac6660f8, type: 3}
@@ -12376,36 +12364,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100008, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
   m_PrefabInstance: {fileID: 2136414951}
   m_PrefabAsset: {fileID: 0}
---- !u!146 &1461318187
-WheelCollider:
+--- !u!65 &1461318191
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461318185}
-  serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.1
-  m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
-  m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 1
-  m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12413,8 +12379,12 @@ WheelCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_Enabled: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.20685916, y: 0.3590446, z: 0.35904142}
+  m_Center: {x: 0.000060934573, y: -0.00006110221, z: 0.00000009685754}
 --- !u!1 &1463209102
 GameObject:
   m_ObjectHideFlags: 0
@@ -13797,36 +13767,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
   m_PrefabInstance: {fileID: 2136414951}
   m_PrefabAsset: {fileID: 0}
---- !u!146 &1572961260
-WheelCollider:
+--- !u!65 &1572961264
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572961258}
-  serializedVersion: 2
-  m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.1
-  m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
-    targetPosition: 0.5
-  m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
-  m_ForwardFriction:
-    m_ExtremumSlip: 0.4
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.8
-    m_AsymptoteValue: 0.5
-    m_Stiffness: 1.5
-  m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
-    m_Stiffness: 1.2
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13834,8 +13782,12 @@ WheelCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_Enabled: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2068528, y: 0.37029237, z: 0.37029216}
+  m_Center: {x: 0.000060927123, y: 0.00006107241, z: -0.000030256808}
 --- !u!1 &1574433902 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1882975350490854863, guid: 115c38ad02e9f474ea3d1c8cac6660f8, type: 3}
@@ -21216,16 +21168,16 @@ PrefabInstance:
       addedObject: {fileID: 1156146368}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1572961260}
+      addedObject: {fileID: 1572961264}
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1072357276}
+      addedObject: {fileID: 1072357280}
     - targetCorrespondingSourceObject: {fileID: 100008, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1461318187}
+      addedObject: {fileID: 1461318191}
     - targetCorrespondingSourceObject: {fileID: 100010, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 274617065}
+      addedObject: {fileID: 274617069}
     - targetCorrespondingSourceObject: {fileID: 100012, guid: 4060ecbc388e36b489cfb7b0eaf9a3f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 709473224}
