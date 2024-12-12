@@ -6,6 +6,10 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset = new Vector3(0, 5, -10); // Offset position relative to the kart
     public float smoothSpeed = 0.125f; // Smoothing factor for camera movement
 
+    public GameManager gamemgmt;
+
+    public Transform pauseMenu;
+
     void LateUpdate()
     {
         // Desired position of the camera
@@ -15,7 +19,14 @@ public class CameraFollow : MonoBehaviour
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
 
-        // Make the camera look at the kart
-        transform.LookAt(kart);
+        if (gamemgmt.isGamePaused)
+        {
+            transform.LookAt(pauseMenu);
+        }
+        else
+        {
+            // Make the camera look at the kart
+            transform.LookAt(kart);
+        }
     }
 }
